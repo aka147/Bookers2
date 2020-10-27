@@ -1,2 +1,84 @@
-<h1>Book#show</h1>
-<p>Find me in app/views/book/show.html.erb</p>
+<div class="container">
+<div class="row">
+
+<% if flash[:notice] %>
+<p class="notice"><%= notice %></p>
+<% end %>
+<% if flash[:alert] %>
+<p class="alert"><%= alert %></p>
+<% end %>
+<div class="container">
+<%= yield %>
+</div>
+
+<div class="col-xs-3">
+  <h2>User info</h2>
+    <img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg" alt="No image">
+      <table class="table">
+        <tbody><tr></tr>
+          <tr>
+    	      <th>name</th>
+    	      <th><%=current_user.name %></th>
+          </tr>
+          <tr>
+    	      <th>introduction</th>
+    	      <th></th>
+          </tr>
+        </tbody>
+        </table>
+
+    <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_26276" href="/users/26276/edit"></a>
+
+    <h2>New book</h2>
+     <%= form_with model:@book, local:true do |f| %>
+      <div class="field row">
+         <!--<label for="book_title">Title</label>-->
+        <%= f.label :title, "Title" %>
+        <%= f.text_field :title ,class:"col-xs-12 book_title" %>
+      </div>
+    <div class="field row">
+      <!--<label for="book_opinion">Opinion</label>-->
+      <%= f.label :body, "Opinion" %>
+      <%= f.text_area :body ,class:"col-xs-12 book_body" %>
+    </div>
+
+    <div class="actions row">
+      <%= f.submit 'Create Book' ,class:"btn btn-primary col-xs-12" %>
+    </div>
+    <% end %>
+</div>
+
+
+<div class="col-xs-9">
+    <h2>Book detail</h2>
+
+    <table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td>
+        <%= link_to user_path(@user) do %>
+<%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg' %>
+<%= @user.name %>
+        <% end %>
+        </td>
+        <td><%= link_to @all_book.title, book_path(@all_book) %></td>
+        <td><%= @all_book.body %></td>
+        <% if current_user == @all_book.user %>
+        <td><%= link_to "Edit", edit_book_path(@all_book) %></td>
+        <td><%= link_to "Destroy", book_path(@all_book), method: :delete %></td>
+        <% end %>
+      </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>

@@ -1,2 +1,46 @@
-<h1>User#edit</h1>
-<p>Find me in app/views/user/edit.html.erb</p>
+<div class="container">
+
+    <% if @user.errors.any? %>
+        <h3> error </h3>
+        <div class="alert alert-warning">
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+    <% end %>
+
+        <p id="notice"></p>
+
+        <h2>User info</h2>
+
+<%= form_with model:@user, local:true do |f| %>
+<!--<form class="edit_user" id="edit_user_26276" enctype="multipart/form-data" action="/users/26276" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="ROOKybSxSVKAg7BL4DT1NEGCL9D/GXAQHBkWLklAKeg+D3QLIPurrdMo6fB7tz2Y/o7BPu+TziJaA2E0Ipav7Q==">-->
+
+
+  <div class="field">
+    <%= f.label :name%>
+    <%= f.text_field :name, class: "name"%>
+    <!--<label for="user_name">Name</label>-->
+    <!--<input class="name" type="text" value="" name="user[name]" id="user_name" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAmJJREFUWAntV7uKIkEUvbYGM4KID3wEIgjKRLLpKGLgFwiCfslGhkb7IbLgAzE1GhMxWxRRBEEwmEgDERWfW6fXuttq60a2wU6B1qlzb9U5fatsKROJVigUArvd7oeAyePx6Af3qGYymT7F2h8Wi+V7Pp+fmE7iv4Sw81GieusKIzNh4puCJzdaHIagCW1F4KSeQ4O4pPLoPb/3INBGBZ7avgz8fxWIxWIUCoX43Blegbe3NwoGg88zwMoncFUB8Yokj8dDdrv9MpfHVquV/H4/iVcpc1qgKAp5vV6y2WxaWhefreB0OimXy6kGkD0YDKhSqdB2u+XJqVSK4vE4QWS5XKrx0WjEcZ/PR9lslhwOh8p1Oh2q1Wp0OBw4RwvOKpBOp1kcSdivZPLvmxrjRCKhiiOOSmQyGXp5ecFQbRhLcRDRaJTe39//BHW+2cDr6ysFAoGrlEgkwpwWS1I7z+VykdvtliHuw+Ew40vABvb7Pf6hLuMk/rGY02ImBZC8dqv04lpOYjaw2WzUPZcB2WMPZet2u1cmZ7MZTSYTNWU+n9N4PJbp3GvXYPIE2ADG9Xqder2e+kTr9ZqazSa1222eA6FqtUoQwqHCuFgscgWQWC6XaTgcEiqKQ9poNOiegbNfwWq1olKppB6yW6cWVcDHbDarIuzuBBaLhWrqVvwy/6wCMnhLXMbR4wnvtX/F5VxdAzJoRH+2BUYItlotmk6nLGW4gX6/z+IAT9+CLwPPr8DprnZ2MIwaQBsV+DBKUEfnQ8EtFRdFneBDKWhCW8EVGbdUQfxESR6qKhaHBrSgCe3fbLTpPlS70M0AAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">-->
+  </div>
+
+  <div class="field">
+    <%= f.label :image%>
+    <%= f.attachment_field :profile_image, class: "image"%>
+    <!--<label for="user_image">Image</label>-->
+    <!--<input value="{}" data-reference="2972245699277b43b081e8d947151930" type="hidden" name="user[profile_image]"><input class="user_image" data-reference="2972245699277b43b081e8d947151930" include_hidden="false" type="file" name="user[profile_image]" id="user_profile_image">-->
+  </div>
+
+  <div class="field">
+    <%= f.label :Introduction%>
+    <%= f.text_area :introduction, class: "Introduction"%>
+    <!--<label for="user_introduction">Introduction</label>-->
+    <!--<textarea class="introduction" name="user[introduction]" id="user_introduction"></textarea>-->
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Update User' %>
+    <!--<input type="submit" name="commit" value="Update User" data-disable-with="Update User">-->
+  </div>
+　</div>
+　<% end %>
