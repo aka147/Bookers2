@@ -14,18 +14,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # def create
-  #   @user = User.new(user_params)
-  #   @user.user_id = current_user.id
-  #   if @user.save
-  #     flash[:success] = "Welcome! You have signed up successfully."
-  #     redirect_to user_path(@user)
-  #   # else
-  #     # @books = Book.all
-  #     # render :index
-  #   end
-  # end
-
   def edit
     @user = User.find(params[:id])
   end
