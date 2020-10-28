@@ -13,7 +13,9 @@
 
 <div class="col-xs-3">
   <h2>User info</h2>
-    <img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg" alt="No image">
+    <tr>
+    <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+    </tr>
       <table class="table">
         <tbody><tr></tr>
           <tr>
@@ -27,7 +29,8 @@
         </tbody>
         </table>
 
-    <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_26276" href="/users/26276/edit"></a>
+
+    <%= link_to "" ,edit_user_path(@user),class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
 
     <h2>New book</h2>
      <%= form_with model:@book, local:true do |f| %>
@@ -65,9 +68,9 @@
   <tbody>
       <tr>
         <td>
+        <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
         <%= link_to user_path(@user) do %>
-<%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg' %>
-<%= @user.name %>
+        <%= @user.name %>
         <% end %>
         </td>
         <td><%= link_to @all_book.title, book_path(@all_book) %></td>
