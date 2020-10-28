@@ -5,6 +5,7 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all
+    @user = current_user
     # @user = User.find(@all_book.user.id)
   end
 
@@ -22,6 +23,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book)
     else
       @books = Book.all
+      @user = current_user
       render :index
     end
   end
